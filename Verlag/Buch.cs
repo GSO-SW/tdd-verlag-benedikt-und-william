@@ -40,9 +40,14 @@ namespace Verlag
             }
             set
             {
-                
-                 auflage = value;
-                            
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner 0 sein.");
+                }
+                else
+                {
+                    auflage = value;
+                }
             }
         }
 
@@ -55,10 +60,12 @@ namespace Verlag
 
         public Buch(string autor, string titel, int auflage) : this(autor, titel)
         {
-            if (auflage <= 0)
+            if (auflage <= 0 || auflage.Equals(1))
             {
                 throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner 0 sein.");
-            } else {
+            }
+            else
+            {
                 this.auflage = auflage;
             }
         
