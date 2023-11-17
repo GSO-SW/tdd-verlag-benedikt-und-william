@@ -105,5 +105,28 @@ namespace VerlagTests
 			//Act
 			Buch b = new Buch(unerlaubtesZeichen, "titel");
 		}
-	}
+
+
+		[TestMethod]
+		public void Buch_ISBNEingabeKann13Sein()
+		{
+			//Arrange
+			int ISBN = 13;
+
+
+			//Act
+			Buch b = new Buch("autor", "titel", 1, ISBN);
+
+			//Assert
+			Assert.AreEqual(ISBN, 13);
+
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public void ISBN_EingabeOhnePruefziffer()
+		{
+
+		}
+    }
 }

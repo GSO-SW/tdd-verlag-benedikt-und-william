@@ -60,7 +60,7 @@ namespace Verlag
 
         public Buch(string autor, string titel, int auflage) : this(autor, titel)
         {
-            if (auflage <= 0 || auflage.Equals(1))
+            if (auflage <= 0)
             {
                 throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner 0 sein.");
             }
