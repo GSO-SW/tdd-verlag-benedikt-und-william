@@ -11,6 +11,7 @@ namespace Verlag
         private string autor;
         private string titel;
         private int auflage;
+        private string isbn;
 
         public string Autor
         {
@@ -51,10 +52,32 @@ namespace Verlag
             }
         }
 
+        public string ISBN
+        {
+            get
+            {
+                return isbn;
+            }
+            set
+            {
+                isbn = value;
+            }
+        }
+
         public Buch(string autor, string titel)
         {
             this.autor = autor;
             this.titel = titel;
+            auflage = 1;
+        }
+
+        public string ISBN10
+        {
+            get
+            {
+                //TODO: ISBN10 aus ISBN13 berechnen
+                return "irgendwas";
+            }
         }
 
 
@@ -63,6 +86,10 @@ namespace Verlag
             if (auflage <= 0)
             {
                 throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner 0 sein.");
+            }
+            else if(auflage == 1)
+            {
+                throw new ArgumentOutOfRangeException("Auflage darf nicht gleich der ersten sein");
             }
             else
             {

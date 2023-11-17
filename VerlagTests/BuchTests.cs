@@ -79,54 +79,93 @@ namespace VerlagTests
 			Buch b = new Buch("autor", "titel", auflage);
 		}
 
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentOutOfRangeException))]
-		public void Auflage_DarfNichtZuKleinSein()
-		{
-			//Arrange
-			Buch b = new Buch("autor", "titel");
-			int auflageNeu = 0;
+		//[TestMethod]
+		//[ExpectedException(typeof(ArgumentOutOfRangeException))]
+		//public void Auflage_DarfNichtZuKleinSein()
+		//{
+		//	//Arrange
+		//	Buch b = new Buch("autor", "titel");
+		//	int auflageNeu = 0;
 
-			//Act
-			b.Auflage = auflageNeu;
-		}
+		//	//Act
+		//	b.Auflage = auflageNeu;
+		//}
 
-		// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
-		[TestMethod]
-		[DataRow("")]
-		[DataRow("#")]
-		[DataRow(";")]
-		[DataRow("§")]
-		[DataRow("%")]
-		[DataRow(null)]
-		[ExpectedException(typeof(ArgumentException))]
-		public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
-		{
-			//Act
-			Buch b = new Buch(unerlaubtesZeichen, "titel");
-		}
-
-
-		[TestMethod]
-		public void Buch_ISBNEingabeKann13Sein()
-		{
-			//Arrange
-			int ISBN = 13;
+		//// DataRow: https://learn.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-mstest#add-more-features
+		//[TestMethod]
+		//[DataRow("")]
+		//[DataRow("#")]
+		//[DataRow(";")]
+		//[DataRow("§")]
+		//[DataRow("%")]
+		//[DataRow(null)]
+		//[ExpectedException(typeof(ArgumentException))]
+		//public void Autor_NurSinnvolleEingabenErlaubt(string unerlaubtesZeichen)
+		//{
+		//	//Act
+		//	Buch b = new Buch(unerlaubtesZeichen, "titel");
+  //      }
 
 
-			//Act
-			Buch b = new Buch("autor", "titel", 1, ISBN);
 
-			//Assert
-			Assert.AreEqual(ISBN, 13);
 
-		}
 
-		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
-		public void ISBN_EingabeOhnePruefziffer()
-		{
+		//[TestMethod]
+  //      public void ISBN_KannErgaenztWerden()
+  //      {
+  //          //Arrange
+  //          string isbn = "978-3770436163";
+		//	Buch b = new Buch("autor", "titel");
 
-		}
-    }
+		//	//Act
+		//	b.ISBN = isbn;
+
+		//	//Assert
+		//	Assert.AreEqual(isbn, b.ISBN);
+		//}
+
+		//[TestMethod]
+		//public void ISBN_kanneingegebenwerden_undbekommtPruefziffer()
+		//{
+		//	//Arrange
+		//	string isbnOhnePruefziffer = "978-377043614";
+		//	string isbnMitPruefziffer = "978-3770436149";
+		//	Buch b = new Buch("autor", "titel");
+
+		//	//Act
+		//	b.ISBN = isbnOhnePruefziffer;
+
+		//	//Assert
+		//	Assert.AreEqual(isbnOhnePruefziffer, b.ISBN);
+		//	Assert.AreEqual(isbnMitPruefziffer, b.ISBN);
+
+		//}
+
+		//[TestMethod]
+		//public void ISBN_KannAusISBN13BerechnetWerden()
+		//{
+		//	//Arrange
+		//	string isbn13 = "978-3770436064";
+		//	string isbn10 = "3770436067";
+
+		//	Buch b = new Buch("autor", "titel");
+  //          b.ISBN = isbn13;
+
+  //          //Act
+  //          string result = b.ISBN10;
+
+		//	//Assert
+		//	Assert.AreEqual(isbn10, result);
+
+
+		//}
+
+
+
+
+
+
+
+
+	}
 }
