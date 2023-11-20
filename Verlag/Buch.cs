@@ -66,16 +66,30 @@ namespace Verlag
 
         public Buch(string autor, string titel)
         {
-            this.autor = autor;
+            string[] unerlaubtesZeichen = { "", "#", ";", "§", "%" };
+            for (int i = 0; i < unerlaubtesZeichen.Length; i++)
+            {
+                if (autor.Contains(unerlaubtesZeichen[i]))
+                {
+                    throw new ArgumentException("Unerlaubtes Zeichen im Autor vorhanden");
+                }
+                else
+                {
+                    this.autor = autor;
+                    break;
+                }
+
+            }
+
             this.titel = titel;
             auflage = 1;
         }
 
-        public string ISBN10
+        public string ISBN13
         {
             get
             {
-                //TODO: ISBN10 aus ISBN13 berechnen
+                //TODO: ISBN13 aus ISBN berechnen
                 return "irgendwas";
             }
         }
@@ -86,10 +100,6 @@ namespace Verlag
             if (auflage <= 0)
             {
                 throw new ArgumentOutOfRangeException("Auflage darf nicht kleiner 0 sein.");
-            }
-            else if(auflage == 1)
-            {
-                throw new ArgumentOutOfRangeException("Auflage darf nicht gleich der ersten sein");
             }
             else
             {
